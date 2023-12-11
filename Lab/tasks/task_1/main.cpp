@@ -5,7 +5,7 @@ using namespace std;
 class task
 {
     double first;
-    double second;
+    int second;
 
 public:
     void init(double, double);
