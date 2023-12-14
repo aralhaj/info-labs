@@ -1,82 +1,78 @@
-#include <iostream>
-#include <cmath>
-using namespace std;
-
-class task
+#include "fraction.h"
+fraction make_fraction(int F, int S)
 {
-    double first;
-    int second;
-
-public:
-    void init(double, double);
-    void read();
-    void print();
-    double func();
-};
-
-void task::init(double a, double b)
-{
-    first = a;
-    second = b;
-}
-
-void task::read()
-{
-    cout << "First: ";
-    cin >> first;
-    cout << "Second: ";
-    cin >> second;
-}
-
-void task::print()
-{
-    cout << "\nFirst: " << first;
-    cout << "\nSecond: " << second << "\n";
-}
-
-double task::func()
-{
-    if (second == 0)
-    {
-        return -1;
-    }
-    return floor(first / second);
-}
-
-task makeTask(double a, double b)
-{
-    task t;
-    t.init(a, b);
+    fraction t;
+    t.Init(F, S);
     return t;
 }
 
 int main()
 {
-    double k;
-    double first, second;
-
-    cout << "First: ";
-    cin >> first;
-    cout << "Second: ";
-    cin >> second;
-
-    task b = makeTask(first, second);
-    b.print();
-    k = b.func();
-
-    if (k != -1)
-        cout << b.func() << " Result\n";
+    setlocale(LC_ALL, "");
+    fraction t;
+    t.Read();
+    if ((t.first > 0) && (t.second > 0))
+    {
+        cout << "integer part F/S " << t.ipart() << "\n";
+    }
     else
-        cout << "Error: Division by zero\n";
+    {
+        cout << "Enter a positive integer!" << endl;
+    }
 
-    b.read();
-    b.print();
-    k = b.func();
+    fraction A;
+    fraction B;
+    A.Init(12, 3);
+    B.Read();
 
-    if (k != -1)
-        cout << b.func() << " Result\n";
-    else
-        cout << "Error: Division by zero\n";
+    A.Show();
+    cout << "A.Power(" << A.first << "," << A.second << ")=" << A.Power() << endl;
 
-    return 0;
+    B.Show();
+    cout << "B.Power(" << B.first << "," << B.second << ")=" << B.Power() << endl;
+
+    cout << "\nPointer method\n";
+
+    fraction *X = new fraction;
+    X->Read();
+    X->Show();
+    cout << "X.Power(" << X->first << "," << X->second << ")=" << X->Power() << endl;
+
+    cout << "\nThe method of arrays without pointers\n";
+    fraction mas[3];
+    for (int i = 0; i < 3; i++)
+        mas[i].Read();
+
+    for (int i = 0; i < 3; i++)
+        mas[i].Show();
+
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "mas[" << i << "].Power(" << mas[i].first << "," << mas[i].second << ")=";
+        cout << mas[i].Power() << endl;
+    }
+
+    cout << "\nMethod of arrays with pointers\n";
+    fraction *p_mas = new fraction[3];
+    for (int i = 0; i < 3; i++)
+        p_mas[i].Read();
+    for (int i = 0; i < 3; i++)
+        p_mas[i].Show();
+
+    for (int i = 0; i < 3; i++)
+    {
+        cout << "p_mas[" << i << "].Power(" << p_mas[i].first << "," << p_mas[i].second;
+        cout << ")=" << p_mas[i].Power() << endl;
+    }
+
+    cout << "Method via function" << endl;
+    int y;
+    int z;
+    cout << "first:";
+    cin >> y;
+    cout << "second:";
+    cin >> z;
+
+    fraction F = make_fraction(y, z);
+    F.Show();
 }
