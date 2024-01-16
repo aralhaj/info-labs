@@ -4,25 +4,29 @@
 class Time
 {
 private:
-    int mins;
-    int secs;
+    int mins, secs;
 
 public:
-    Time();
-    Time(int, int);
-    Time(Time& time);
+    Time(int m = 0, int s = 0)
+    {
+        mins = m;
+        secs = s;
+    };
+    Time(Time &t)
+    {
+        mins = t.mins;
+        secs = t.secs;
+    };
     ~Time();
 
-    void setMins(int);
-    void setSecs(int);
+    void setMins(int m) { mins = m; };
+    void setSecs(int s) { secs = s; };
 
-    int getMins();
-    int getSecs();
+    int getMins() { return mins; };
+    int getSecs() { return secs; };
 
-    Time& operator=(const Time&);
-    Time operator+(const Time&);
-    bool operator==(const Time&);
-
-    friend ostream& operator<<(ostream& out, const Time& t);
-    friend istream& operator>>(istream& in, Time& t);
+    Time operator+(const Time &);
+    bool operator==(const Time &);
+    friend istream &operator>>(istream &in, Time &t);
+    friend ostream &operator<<(ostream &out, const Time &t);
 };

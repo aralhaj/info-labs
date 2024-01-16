@@ -1,5 +1,4 @@
-#include "Pair.h"\
-#include <iostream>
+#include "Pair.h" #include < iostream>
 using namespace std;
 
 Pair::Pair(void)
@@ -7,73 +6,76 @@ Pair::Pair(void)
 	first = 0;
 	second = 0;
 }
-	//деструктор
-	Pair::~Pair(void)
-	{
-	}
-	//конструктор с параметрами
-	Pair::Pair(int ffirst, int ssecond)
-	{
-		
-		first = ffirst;
-		second = ssecond;
-	}
-	//конструктор копировани¤
-	Pair::Pair(const Pair& t )
-	{
-		first = t.first;
-		second = t.second;
-	}
-	//селекторы
-	int Pair::get_first()
-	{
-		return first;
-	}
-	int Pair::get_second()
-	{
-		return second;
-	}
-	//модификаторы
-	void Pair::set_first(int ffirst)
-	{
-		first = ffirst;
-	}
-	void Pair::set_second(int ssecond)
-	{
-		second = ssecond;
-	}
-	//перегрузка приваивани¤
-	Pair& Pair::operator=(const Pair& t)
-	{
-		if (this == &t) return *this;
-		first = t.first;
-		second = t.second;
-		return *this;
-	}
-	//перегрузка ввода-вывода
-ostream& operator<<(ostream& out, const Pair& t)
+
+Pair::~Pair(void)
 {
-	out << "\nПервое число в паре = " << t.first;
-	out << "\nВторое число в паре = " << t.second;
+}
+
+Pair::Pair(int ffirst, int ssecond)
+{
+
+	first = ffirst;
+	second = ssecond;
+}
+
+Pair::Pair(const Pair &t)
+{
+	first = t.first;
+	second = t.second;
+}
+
+int Pair::get_first()
+{
+	return first;
+}
+int Pair::get_second()
+{
+	return second;
+}
+
+void Pair::set_first(int ffirst)
+{
+	first = ffirst;
+}
+void Pair::set_second(int ssecond)
+{
+	second = ssecond;
+}
+
+Pair &Pair::operator=(const Pair &t)
+{
+	if (this == &t)
+		return *this;
+	first = t.first;
+	second = t.second;
+	return *this;
+}
+
+ostream &operator<<(ostream &out, const Pair &t)
+{
+	out << "\nThe first number in a pair = " << t.first;
+	out << "\nThe second number in a pair = " << t.second;
 	out << "\n";
 	return out;
 }
-istream& operator>>(istream& in, Pair& t)
+istream &operator>>(istream &in, Pair &t)
 {
-	cout << " Введите первое число в паре "; in >> t.first;
-	cout << " Введите второе число в паре "; in >> t.second;
+	cout << " Enter the first number in the pair ";
+	in >> t.first;
+	cout << " Enter the second number in the pair ";
+	in >> t.second;
 	return in;
 }
-//методы сравнени¤ пар из варианта
-bool Pair::operator>(const Pair& t)
+
+bool Pair::operator>(const Pair &t)
 {
 	return (first > t.first) || (first == t.first) && second > t.second;
 }
-bool Pair::operator<(const Pair& t)
+bool Pair::operator<(const Pair &t)
 {
 	return (first < t.first) || (first == t.first) && second < t.second;
 }
-bool Pair::operator==(const Pair& t)
+bool Pair::operator==(const Pair &t)
 {
 	return (first == t.first) && (second == t.second);
 }

@@ -3,11 +3,6 @@
 
 using namespace std;
 
-Time::Time()
-{
-    mins = 0;
-    secs = 0;
-}
 Time::Time(int x, int y)
 {
     mins = x;
@@ -21,7 +16,7 @@ Time::Time(Time &time)
 }
 Time::~Time()
 {
-    /*cout << " ƒеструктор " << endl;*/
+    /*cout << " f " << endl;*/
 }
 void Time::setMins(int x)
 {
@@ -41,7 +36,6 @@ int Time::getSecs()
 }
 Time &Time::operator=(const Time &t)
 {
-    // проверка на самоприсваивание
     if (&t == this)
         return *this;
     mins = t.mins;

@@ -1,4 +1,6 @@
 #include "fraction.h"
+#include <iostream>
+
 fraction make_fraction(int F, int S)
 {
     fraction t;
@@ -8,8 +10,10 @@ fraction make_fraction(int F, int S)
 
 int main()
 {
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "Russ");
+
     fraction t;
+
     t.Read();
     if ((t.first > 0) && (t.second > 0))
     {
