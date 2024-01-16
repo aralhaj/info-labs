@@ -9,8 +9,8 @@ int rec(int n, int f)
     f = c;
     if (n != 0)
     {
-    cout « f « endl;
-    return rec(n-1, f);
+        cout << f << endl;
+        return rec(n - 1, f);
     }
     else
         return 0;
@@ -18,6 +18,6 @@ int rec(int n, int f)
 
 void main()
 {
-    cin » n;
+    cin >> n;
     rec(n, f);
 }
